@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Copyright 2021 XEBIALABS
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+-->
+
+<synthetic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.xebialabs.com/deployit/synthetic" xsi:schemaLocation="http://www.xebialabs.com/deployit/synthetic synthetic.xsd">
+    <type type="outlook.Server" extends="xlrelease.Configuration" label="Outlook Server">
+        <property name="SMTPServer" category="input" required="true" label="Sender" description="SMTP Server: 'smtp.company.com'."/>
+        <property name="username" category="input" label="Username" kind="string" description="Mail server username."/>
+        <property name="password" category="input" label="Password or Token" kind="string" description="Mail server password or token."/>
+    </type>
+
+    <type type="outlook.Task" extends="xlrelease.PythonScript" virtual="true">
+        <property name="iconLocation" hidden="true" default="outlook/outlook.png"/>
+        <property name="taskColor" hidden="true" default="#2A6190"/>
+        <property name="server" category="input" label="Server" required="true" description="Outlook Server" referenced-type="outlook.Server" kind="ci"/>
+    </type>
+
+    <type type="outlook.CreateCalendarEvent" extends="outlook.Task">
+        <property name="server" category="input" required="true" label="Server" kind="ci" referenced-type="outlook.Server" description="Outlook Server"/>
+        <property name="emails" category="input" label="Emails" kind="string" description="The list of emails this invite will go out to: 'user1@company.com, user2@company.com, user3@company.com'."/>
+        <property name="timeStart" category="input" kind="string" label="Event Start Time" required="true" description="The start time of the event (Eastern Time): MM/DD/YY hh:mm (08/15/21 17:30)."/>
+        <property name="timeEnd" category="input" kind="string" label="Event End Time" required="true" description="The end time of the event (Eastern Time): MM/DD/YY hh:mm (08/15/21 21:30)."/>
+        <property name="subject" category="input" kind="string" required="true" label="Event Subject" description="The subject of the event."/>
+        <property name="message" category="input" kind="string" required="true" size="large" label="Event Message" description="The message of the event."/>
+        <property name="fromSender" category="input" required="true" kind="string" label="Sender" description="Example: 'username@company.com'."/>
+    </type>
+</synthetic>
