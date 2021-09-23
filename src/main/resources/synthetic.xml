@@ -12,7 +12,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     <type type="outlook.Server" extends="xlrelease.Configuration" label="Outlook Server">
         <property name="SMTPServer" category="input" required="true" label="Sender" description="SMTP Server: 'smtp.company.com'."/>
         <property name="username" category="input" label="Username" kind="string" description="Mail server username."/>
-        <property name="password" category="input" label="Password or Token" kind="string" description="Mail server password or token."/>
+        <property name="password" password="true" category="input" label="Password or Token" kind="string" description="Mail server password or token."/>
     </type>
 
     <type type="outlook.Task" extends="xlrelease.PythonScript" virtual="true">

@@ -54,8 +54,8 @@ msg['Subject'] = subject
 msg['From'] = fro
 msg['To'] = ",".join(attendees)
 
-part_email = MIMEText(eml_body,"html")
-part_cal = MIMEText(ical,'calendar;method=REQUEST')
+part_email = MIMEText(eml_body, "html")
+part_cal = MIMEText(ical, 'calendar;method=REQUEST')
 
 msgAlternative = MIMEMultipart('alternative')
 msg.attach(msgAlternative)
